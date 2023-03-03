@@ -1,16 +1,12 @@
 const mongoose = require("mongoose");
 
-const connectToDataBase = async () => {
+const connectToDataBase = () => {
   console.log("inciando conexao com DB");
-  await mongoose.connect(
+  mongoose.connect(
     `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.anrwk8j.mongodb.net/?retryWrites=true&w=majority`,
-    (error) => {
-      if (error) {
-        console.log("Erro ao conectar no MongoDB: ", error);
-      }
-      console.log("Conexão ao MongoDB com Sucesso!");
-    }
+    { useNewUrlParser: true }
   );
+  console.log("conetado do mongoDB");
 };
 
 module.exports = connectToDataBase;
